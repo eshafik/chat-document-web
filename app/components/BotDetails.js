@@ -66,7 +66,7 @@ function BotDetails() {
         {
             botDetails && (
                 <>
-                <h2 className="bottom-margin">Bot Name: {botDetails.bot_name}</h2>
+                <h2 className="bottom-margin">{botDetails.bot_name}</h2>
                 <span className="pt-2">
                 <AddNewDropDown newresource={newResource} setnewresource={setNewResource}/>
                 </span>
@@ -75,7 +75,7 @@ function BotDetails() {
         }
         {
             !botDetails && (
-                <h2>Loading....</h2>
+                <Spinner animation="grow" variant="info" />
             )
         }
       </div>
@@ -84,9 +84,9 @@ function BotDetails() {
             (   
                 <>
                 <ResourceList resources={botResources} newresource={newResource} setnewresource={setNewResource}/>
-                <div className='d-flex justify-content-between'>
-                <Button onClick={handleIndexClick}>
-                    {/* {botDetails && botDetails.is_index_created?'Update Index': 'Create Index'} */}
+                <div className='d-flex justify-content-between top-margin'>
+                {console.log("bot resources...", botResources, JSON.stringify(botResources) === JSON.stringify([]))}
+                <Button onClick={handleIndexClick} disabled={JSON.stringify(botResources) === JSON.stringify([]) ? true:false}>
                     {
                         isIndexLoading && (
                             <Spinner
@@ -104,6 +104,9 @@ function BotDetails() {
                     {
                         !isIndexLoading && botDetails && botDetails.is_index_created && 'Update Index'
                     }
+                    {
+                        !isIndexLoading && botDetails && !botDetails.is_index_created && 'Create Index'
+                    }
                 </Button>
                 {
                     botDetails && botDetails.is_index_created && (
@@ -117,7 +120,7 @@ function BotDetails() {
       }
       {
             botDetails && !botResources && (
-                <h2>Loading....</h2>
+                <Spinner animation="grow" variant="info" />
             )
         }
 

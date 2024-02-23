@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react'
-import { Tooltip as ReactTooltip } from 'react-tooltip'
+import { Tooltip as ReactTooltip } from 'react-tooltip';
+import { Link } from 'react-router-dom';
 
 import StateContext from '../StateContext';
 import axiosInstance from '../api_call';
@@ -37,12 +38,15 @@ function BotList() {
         const avatar_url = getRandomAvatar(botItem.bot_username);
         return (
             (
-        <div key={botItem.id} className="grid-item">
-          <div className="circle">
-            <img className="avatar-tiny" src={avatar_url} alt="Avatar" />
-            <p>{botItem.bot_name}</p>
-          </div>
-        </div>
+        <Link to={`/bot/${botItem.id}`}>
+            <div key={botItem.id} className="grid-item">
+            <div className="circle">
+                <img className="avatar-tiny" src={avatar_url} alt="Avatar" />
+                <p>{botItem.bot_name}</p>
+            </div>
+            </div>
+        </Link>
+        
       )
         )
       })}
