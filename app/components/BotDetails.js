@@ -107,7 +107,7 @@ function BotDetails() {
                 </Button>
                 {
                     botDetails && botDetails.is_index_created && (
-                        <Button variant='warning'>Start Chat</Button>
+                        <Link to={`/bot/${botDetails.bot_username}/chat`} className="mx-1"><Button variant='warning'>Start Chat</Button></Link>
                     )
                 }
                 </div>
