@@ -1,6 +1,6 @@
-import { useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import StateContext from '../StateContext';
+import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import StateContext from "../StateContext";
 
 const useRequireAuth = () => {
   const navigate = useNavigate();
@@ -8,7 +8,7 @@ const useRequireAuth = () => {
 
   useEffect(() => {
     if (!appState.isLoggedIn) {
-      navigate('/');
+      navigate("/");
     }
   }, [appState.isLoggedIn, navigate]);
 };
