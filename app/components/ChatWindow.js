@@ -65,7 +65,7 @@ const ChatWindow = () => {
   return (
     <Page title="Chat">
       {console.log("total messages", chatMessages)}
-      <div style={{ position: "relative", height: "100vh", width: "700px" }}>
+      <div style={{ position: "relative", height: "80vh", width: "700px" }}>
         <MainContainer>
           <ChatContainer>
             {/* Display chat messages and typing indicator */}

@@ -37,9 +37,10 @@ function AddUrlModal(props) {
       axiosInstance
         .post("/bot/resource/", data, { appDispatch })
         .then((response) => {
+          let x = Math.random() * 10;
           console.log("Add url response", response);
           props.onHide();
-          props.setnewresource(response.data.data.id);
+          props.setnewresource(x);
         })
         .catch((error) => {
           console.log("error: ", error);
